@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
@@ -13,86 +13,167 @@
       emailjs.init("YOUR_PUBLIC_KEY"); // replace with your EmailJS Public Key
     })();
   </script>
+
   <style>
-    /* Shared styling */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f9f9f9;
+      background: #f4f4f4;
       color: #333;
     }
+
     header {
       background: #333;
       color: #fff;
       padding: 1rem;
     }
+
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
-    .navbar .nav-links {
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
       list-style: none;
       display: flex;
-      gap: 15px;
+      gap: 20px;
     }
-    .navbar a {
-      color: white;
+
+    .nav-links li a {
       text-decoration: none;
+      color: #fff;
     }
+
+    .menu-toggle {
+      display: none;
+    }
+
     section {
       padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    /* Quiz styling */
-    .quiz-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    .hero-content h1 span {
+      color: #007bff;
     }
-    .question { font-size: 1.5em; margin-bottom: 20px; }
-    .answer-button {
-      display: block;
-      background-color: #4CAF50;
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007bff;
       color: white;
+      padding: 10px 20px;
       border: none;
-      padding: 10px;
-      margin: 5px 0;
-      width: 100%;
-      font-size: 1.1em;
-      cursor: pointer;
       border-radius: 5px;
-      transition: background-color 0.3s;
+      text-decoration: none;
     }
-    .answer-button:hover { background-color: #45a049; }
-    .hidden { display: none; }
 
-    /* Blog styling */
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 10px;
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
+    .about-content img {
+      max-width: 200px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    .project-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .project-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+    }
+
+    /* Quiz styles */
+    .quiz-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      margin-bottom: 10px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    /* Blog styles */
     .post {
       background: white;
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
-    .post h2 { margin: 0 0 10px; }
-    .post small { color: gray; font-size: 12px; }
+
+    .post h2 {
+      margin: 0 0 10px;
+    }
+
+    .post small {
+      color: gray;
+      font-size: 12px;
+    }
   </style>
 </head>
+
 <body>
+
   <!-- Navbar -->
   <header>
     <nav class="navbar">
       <div class="logo">MyPortfolio</div>
-      <ul class="nav-links" id="nav-links">
+      <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -100,15 +181,14 @@
         <li><a href="#blog">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
     </nav>
   </header>
 
   <!-- Hero -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1>Hello, I'm <span>MR__SURYA_PRAKRSH_G</span></h1>
-      <p>I am the student</p>
+      <h1>Hello, I'm <span>SURYA PRAKASH</span></h1>
+      <p>I am a student</p>
       <a href="#projects" class="btn">View My Work</a>
     </div>
   </section>
@@ -117,7 +197,7 @@
   <section id="about">
     <h2>About Me</h2>
     <div class="about-content">
-      <img src="IMG_ 1000033005.jpg" alt="Profile Photo" width="200">
+      <img src="IMG_1000033005.jpg" alt="Profile Photo">
       <p>
         I am a student enthusiastic about technology and design. I love building interactive,
         user-friendly web applications and exploring new tools in the tech world.
@@ -129,26 +209,33 @@
   <section id="projects">
     <h2>My Projects</h2>
     <div class="project-grid">
-      <div class="project-card"><h3>Project 1</h3><p>A simple responsive website.</p></div>
-      <div class="project-card"><h3>Project 2</h3><p>JavaScript-based quiz app.</p></div>
-      <div class="project-card"><h3>Project 3</h3><p>Personal blog with CMS.</p></div>
+      <div class="project-card">
+        <h3>Project 1</h3>
+        <p>A simple responsive website.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 2</h3>
+        <p>JavaScript-based quiz app.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 3</h3>
+        <p>Personal blog with CMS.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Quiz -->
+  <!-- Quiz Section -->
   <section id="quiz">
     <h2>Random Quiz</h2>
     <div class="quiz-container">
-      <div id="quiz-box">
-        <div id="question" class="question"></div>
-        <div id="answers" class="answers"></div>
-        <button onclick="nextQuestion()" class="answer-button hidden" id="next-button">Next Question</button>
-      </div>
-      <div id="result" class="hidden"></div>
+      <div class="question" id="question">Loading question...</div>
+      <div id="options"></div>
+      <button onclick="checkAnswer()">Submit</button>
+      <div id="result"></div>
     </div>
   </section>
 
-  <!-- Blog -->
+  <!-- Blog Section -->
   <section id="blog">
     <h2>My Blog</h2>
     <div class="container" id="postsContainer"></div>
@@ -168,60 +255,94 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025MR__SURYA_PRAKASH_G| All rights reserved</p>
+    <p>&copy; 2025 SURYA PRAKASH | All rights reserved</p>
   </footer>
 
+  <!-- Script -->
   <script>
-    /* Quiz Script */
-    const questions = [
-      { question: "What is the capital of France?", answers: ["Berlin","Madrid","Paris","Rome"], correctAnswer: "Paris" },
-      { question: "Which planet is known as the Red Planet?", answers: ["Earth","Mars","Venus","Jupiter"], correctAnswer: "Mars" },
-      { question: "Who wrote 'Romeo and Juliet'?", answers: ["Shakespeare","Dickens","Austen","Hemingway"], correctAnswer: "Shakespeare" },
-      { question: "What is the largest ocean on Earth?", answers: ["Atlantic Ocean","Indian Ocean","Pacific Ocean","Arctic Ocean"], correctAnswer: "Pacific Ocean" },
-      { question: "Which element has the chemical symbol 'O'?", answers: ["Oxygen","Gold","Osmium","Ozone"], correctAnswer: "Oxygen" }
+    // Quiz
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        answer: "Paris"
+      },
+      {
+        question: "What is 2 + 2?",
+        options: ["3", "4", "5", "6"],
+        answer: "4"
+      },
+      {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth", "Mars", "Jupiter", "Venus"],
+        answer: "Mars"
+      },
+      {
+        question: "Who wrote 'Romeo and Juliet'?",
+        options: ["Mark Twain", "William Shakespeare", "Charles Dickens", "Jane Austen"],
+        answer: "William Shakespeare"
+      }
     ];
-    let score = 0, currentQuestionIndex = 0;
-    function shuffleArray(array){ for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]];}}
-    function loadQuestion(){
-      const q=questions[currentQuestionIndex];
-      document.getElementById("question").textContent=q.question;
-      const answers=[...q.answers]; shuffleArray(answers);
-      const answersDiv=document.getElementById("answers"); answersDiv.innerHTML="";
-      answers.forEach(a=>{
-        const btn=document.createElement("button");
-        btn.textContent=a; btn.classList.add("answer-button");
-        btn.onclick=()=>checkAnswer(a);
-        answersDiv.appendChild(btn);
-      });
-      document.getElementById("next-button").classList.add("hidden");
-    }
-    function checkAnswer(answer){
-      const q=questions[currentQuestionIndex];
-      const resultDiv=document.getElementById("result");
-      if(answer===q.correctAnswer){ score++; resultDiv.textContent="Correct!"; }
-      else { resultDiv.textContent=`Incorrect! The correct answer was ${q.correctAnswer}.`; }
-      document.getElementById("next-button").classList.remove("hidden");
-      resultDiv.classList.remove("hidden");
-    }
-    function nextQuestion(){
-      currentQuestionIndex++;
-      if(currentQuestionIndex<questions.length){ loadQuestion(); document.getElementById("result").classList.add("hidden"); }
-      else{ document.getElementById("quiz-box").innerHTML=`<h2>Quiz Complete!</h2><p>Your final score is ${score} out of ${questions.length}.</p>`; }
-    }
-    loadQuestion();
 
-    /* Blog Script */
-    function loadPosts(){
-      const postsContainer=document.getElementById("postsContainer");
-      const posts=JSON.parse(localStorage.getItem("blogPosts"))||[];
-      postsContainer.innerHTML="";
-      posts.reverse().forEach(post=>{
-        const postEl=document.createElement("div");
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const resultEl = document.getElementById("result");
+
+    const currentQuiz = quizData[Math.floor(Math.random() * quizData.length)];
+
+    function loadQuiz() {
+      questionEl.textContent = currentQuiz.question;
+      optionsEl.innerHTML = "";
+      resultEl.textContent = "";
+
+      currentQuiz.options.forEach((option, index) => {
+        const optionHTML = `
+          <div class="option">
+            <input type="radio" name="answer" id="option${index}" value="${option}">
+            <label for="option${index}">${option}</label>
+          </div>
+        `;
+        optionsEl.innerHTML += optionHTML;
+      });
+    }
+
+    function checkAnswer() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) {
+        resultEl.textContent = "Please select an answer!";
+        resultEl.style.color = "red";
+        return;
+      }
+      if (selected.value === currentQuiz.answer) {
+        resultEl.textContent = "Correct!";
+        resultEl.style.color = "green";
+      } else {
+        resultEl.textContent = `Incorrect. The correct answer was "${currentQuiz.answer}".`;
+        resultEl.style.color = "red";
+      }
+    }
+
+    loadQuiz();
+
+    // Blog
+    function loadPosts() {
+      const postsContainer = document.getElementById("postsContainer");
+      const posts = JSON.parse(localStorage.getItem("blogPosts")) || [
+        { title: "Welcome to my blog", content: "This is a sample blog post.", date: new Date() }
+      ];
+      postsContainer.innerHTML = "";
+      posts.reverse().forEach(post => {
+        const postEl = document.createElement("div");
         postEl.classList.add("post");
-        postEl.innerHTML=`<h2>${post.title}</h2><small>${new Date(post.date).toLocaleString()}</small><p>${post.content}</p>`;
+        postEl.innerHTML = `
+          <h2>${post.title}</h2>
+          <small>${new Date(post.date).toLocaleString()}</small>
+          <p>${post.content}</p>
+        `;
         postsContainer.appendChild(postEl);
       });
     }
+
     loadPosts();
   </script>
 </body>
